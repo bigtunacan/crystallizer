@@ -1,0 +1,29 @@
+name: crystallizer
+version: 0.1.0
+
+authors:
+  - Joiey Seeley <joiey.seeley@gmail.com>
+
+targets:
+  crystallizer:
+    main: src/crystallizer.cr
+
+crystal: 0.22.0
+
+license: MIT
+
+dependencies:
+  kemal:
+    github: kemalcr/kemal
+    branch: master
+
+  kemal-session:
+    github: kemalcr/kemal-session
+    branch: master
+
+  pg:
+    github: bigtunacan/crystal-pg
+
+  crecto:
+    github: Crecto/crecto
+    #path: /code/git_repos/crecto
