@@ -21,7 +21,8 @@ end
 
 before_all "/**" do |env|
 	env.session.string("test", "this is test")
-	env.session.string("user", "jseeley")
+	#env.session.string("user", "jseeley")
+	@username = env.session.string("username")
 	#pp env.request.cookies["crystallizer_session"]
 	#pp env
 	#unless env.request.cookies["crystallizer_session"].has_key?("user")

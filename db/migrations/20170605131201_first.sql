@@ -14,6 +14,7 @@ ALTER SEQUENCE public.users_id_seq
 CREATE TABLE users(
   id INTEGER NOT NULL DEFAULT nextval('users_id_seq'::regclass),
   email VARCHAR NOT NULL UNIQUE,
+  username VARCHAR NOT NULL UNIQUE,
   password VARCHAR NOT NULL,
   created_at timestamp without time zone,
   updated_at timestamp without time zone
