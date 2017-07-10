@@ -7,12 +7,19 @@ require "db"
 require "pg"
 require "crecto"
 
+# TODO:
+# 1) Add support for voting system & karma.
+# 2) Add comment support.
+# 3) Add single display Flash support
+# 4) Form elements need `name` attribute specified
+# 5) Don't store passwords as plain text
+
 module Crystallizer
   # TODO Put your code here
 end
 
 # TODO: make this better
-Session.config do |config|
+Kemal::Session.config do |config|
 	config.secret = "mysecret"
 	config.cookie_name = "crystallizer_session"
 	config.gc_interval = 2.minutes
@@ -51,6 +58,27 @@ get "/register" do |env|
 end
 
 post "/register" do |env|
+  #pp env.params.body["inputSubscribed"]
+
+  begin
+    user = User.new
+    user.login = env.params.body["inputLogin"]
+    user.email = env.params.body["inputEmail"]
+    user.password = env.params.body["inputPassword"]
+    user.subscribed = env.params.body["inputSubscribed"] ? true : false
+
+    changeset = Repo.insert(user)
+  rescue ex
+    if /.+email_key.+/ =~ ex.message
+      puts "WE ARE HERE"
+      # TODO: Add support for recovering forgotten passwords
+      env.session.string("flash", "That email address is already in use.")
+      env.redirect "/register"
+    else
+      puts "WTF?!"
+      pp ex.message
+    end
+  end
 
 end
 

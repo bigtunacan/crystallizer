@@ -14,12 +14,14 @@ ALTER SEQUENCE public.users_id_seq
 CREATE TABLE users(
   id INTEGER NOT NULL DEFAULT nextval('users_id_seq'::regclass),
   email VARCHAR NOT NULL UNIQUE,
+  login VARCHAR NOT NULL UNIQUE,
   password VARCHAR NOT NULL,
+  subscribed BOOLEAN NOT NULL DEFAULT FALSE,
   created_at timestamp without time zone,
   updated_at timestamp without time zone
 );
 
-INSERT INTO public.users(email, password) VALUES ('joiey.seeley@gmail.com', 'test');
+INSERT INTO public.users(email, password, login) VALUES ('joiey.seeley@gmail.com', 'test', 'bigtunacan');
 
 -- +micrate Down
 -- SQL section 'Down' is executed when this migration is rolled back

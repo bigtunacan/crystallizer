@@ -1,25 +1,31 @@
 <div class="container">
+  <% if env.session.string?("flash") %>
+    <div class="alert alert-danger" role="alert"><%= env.session.string("flash") %></div>
+    <!-- TODO: This doesn't clear value from the session -->
+    <% env.session.string("flash", "") %>
+  <% end %>
   <form action="/register" method="post" class="form-horizontal">
     <fieldset>
       <div class="form-group">
         <label for="inputLogin" class="col-lg-2 control-label">Login</label>
         <div class="col-lg-10">
-          <input type="text" class="form-control" id="inputLogin" placeholder="Login" autocomplete="new-password">
+          <input type="text" class="form-control" name="inputLogin" id="inputLogin" placeholder="Login" autocomplete="new-password">
         </div>
       </div>
       <div class="form-group">
         <label for="inputEmail" class="col-lg-2 control-label">Email</label>
         <div class="col-lg-10">
-          <input type="text" class="form-control" id="inputEmail" placeholder="Email" autocomplete="new-password">
+          <input type="text" class="form-control" name="inputEmail" id="inputEmail" placeholder="Email" autocomplete="new-password">
         </div>
       </div>
       <div class="form-group">
         <label for="inputPassword" class="col-lg-2 control-label">Password</label>
         <div class="col-lg-10">
-          <input type="password" class="form-control" id="inputPassword" placeholder="Password" autocomplete="new-password">
+          <input type="password" class="form-control" name="inputPassword" id="inputPassword" placeholder="Password" autocomplete="new-password">
           <div class="checkbox">
             <label>
-              <input type="checkbox"> Yes! Send me a weekly summary of the top Crystal news.
+              <input type="hidden" name="inputSubscribed" value="off"></input>
+              <input type="checkbox" name="inputSubscribed"> Yes! Send me a weekly summary of the top Crystal news.
               <span class="help-block">We respect your privacy and do not tolerate spam and will never sell, rent, lease or give away your information (name, email, etc.) to any third party.  Nor will we send you unsolicited email.</span>
             </label>
           </div>

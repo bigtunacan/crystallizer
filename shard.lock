@@ -1,8 +1,8 @@
 version: 1.0
 shards:
   crecto:
-    path: /code/git_repos/crecto
-    version: 0.1.0
+    github: Crecto/crecto
+    version: 0.6.0
 
   db:
     github: crystal-lang/crystal-db
@@ -10,18 +10,18 @@ shards:
 
   kemal:
     github: kemalcr/kemal
-    commit: 66612eeb04fd59b6cb26919f38859d0440f68153
+    commit: dbbe05a610e3c86b774a6bc546341329a408fa18
 
   kemal-session:
     github: kemalcr/kemal-session
-    commit: bbef25f36fe6505d3221de9952f94a1023225b85
+    commit: 5353aecb9d6a8aee54a0d3cc9fc50ee540dc6781
 
   kilt:
     github: jeromegn/kilt
-    version: 0.3.3
+    version: 0.4.0
 
   pg:
-    path: /code/git_repos/crystal-pg
+    github: bigtunacan/crystal-pg
     version: 0.13.3
 
   radix:
